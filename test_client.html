@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Client</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsmpeg/0.1/jsmpg.js"></script>
+  </head>
+  <body>
+    <canvas></canvas>
+
+    <button>add camera</button>
+
+    <script>
+      let button = document.querySelector("button");
+      var client = new WebSocket("ws://localhost:9999");
+      var canvas = document.querySelector("canvas");
+      var player = new jsmpeg(client, {
+        canvas: canvas
+      });
+
+      button.onclick = async () => {
+        fetch("http://localhost:3030/")
+          .then(blob => blob.json())
+          .then(({ port }) => {
+            console.log(port);
+            let c = document.createElement("canvas");
+            let newClient = new WebSocket("ws://localhost:" + port);
+            document.body.appendChild(c);
+            new jsmpeg(newClient, {
+              canvas: c
+            });
+          });
+      };
+    </script>
+  </body>
+</html>
