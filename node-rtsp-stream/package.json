@@ -43,7 +43,10 @@
     "email": "david@jsa.me"
   },
   "dependencies": {
+<<<<<<< HEAD
     "ffmpeg": "^0.0.4",
+=======
+>>>>>>> 754243c6f07db6db21493d97c26443d48a5734e3
     "ws": "^0.4.32"
   },
   "description": "node-rtsp-stream ================",

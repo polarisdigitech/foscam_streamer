@@ -12,5 +12,3 @@ RUN bash tools/install_node.sh
 RUN bash tools/install_ffmpeg.sh
 
 RUN npm install
-
-# RUN apk add --no-cache ffmpeg ffmpeg-libs
